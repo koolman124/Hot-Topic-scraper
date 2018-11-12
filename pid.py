@@ -1,3 +1,4 @@
+# Jarman Liu
 import requests
 import re
 from multiprocessing.dummy import Pool as ThreadPool
@@ -12,8 +13,6 @@ def htscraping(pid):
     if filter:
         # print(r.url)
         file.write(r.url + "\n")
-    #pid += 1
-    return (pid)
 
 
 def blscraping(pid):
@@ -25,8 +24,6 @@ def blscraping(pid):
     if filter:
         # jar print(r.url)
         file.write(r.url + "\n")
-    #pid += 1
-    return (pid)
 
 
 print("Stores:")
@@ -58,3 +55,5 @@ elif choice == 2:
     pool.close()
     pool.join()
     file.close()
+else:
+    print("Please input a valid choice")
