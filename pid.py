@@ -8,7 +8,7 @@ def htscraping(pid):
     s = requests.Session()
     url = 'https://www.hottopic.com/product/' + str(pid) + '.html'
     r = s.get(url, headers=headers, allow_redirects=True)
-    filter = re.findall('figure-hot-topic-exclusive', str(r.url))
+    filter = re.findall(r"funko.*hot-topic-exclusive", str(r.url))
     if filter:
         # print(r.url)
         file.write(r.url + "\n")
@@ -21,7 +21,7 @@ def blscraping(pid):
     s = requests.Session()
     url = 'https://www.boxlunch.com/product/' + str(pid) + '.html'
     r = s.get(url, headers=headers, allow_redirects=True)
-    filter = re.findall('boxlunch-exclusive', str(r.url))
+    filter = re.findall(r"funko.*boxlunch-exclusive", str(r.url))
     if filter:
         # jar print(r.url)
         file.write(r.url + "\n")
