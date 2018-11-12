@@ -21,10 +21,7 @@ def scraping(pid):
     #pid += 1
     return (pid)
 
-# file.close()
 
-
-# 2000000
 a = []
 for i in range(ranges):
     a.append(pid)
@@ -36,7 +33,3 @@ results = pool.map(scraping, a)
 pool.close()
 pool.join()
 file.close()
-#xx = 'https://www.hottopic.com/product/funko-overwatch-pop-games-roadhog-junkensteins-monster-6-inch-vinyl-figure-hot-topic-exclusive/11482356.html'
-#r1 = re.findall('figure-hot-topic-exclusive', xx)
-# if r1:
-#    print(xx)
