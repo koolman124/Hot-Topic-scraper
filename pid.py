@@ -10,8 +10,9 @@ def htscraping(pid):
     url = 'https://www.hottopic.com/product/' + str(pid) + '.html'
     r = s.get(url, headers=headers, allow_redirects=True)
     filter = re.findall(r"funko.*hot-topic-exclusive", str(r.url))
-    if filter:
-        # print(r.url)
+    filter1 = re.findall(r"street-date", str(r.url))
+    if filter or filter1:
+        print(r.url)
         file.write(r.url + "\n")
 
 
@@ -21,8 +22,9 @@ def blscraping(pid):
     url = 'https://www.boxlunch.com/product/' + str(pid) + '.html'
     r = s.get(url, headers=headers, allow_redirects=True)
     filter = re.findall(r"funko.*boxlunch-exclusive", str(r.url))
-    if filter:
-        # jar print(r.url)
+    filter1 = re.findall(r"street-date", str(r.url))
+    if filter or filter1:
+        print(r.url)
         file.write(r.url + "\n")
 
 
@@ -31,11 +33,13 @@ print("1. Hot Topic")
 print("2. Box Lunch")
 choice = int(input("Which store would you like to scrape? "))
 if choice == 1 or choice == 2:
-    pid = input(
-        "What PID do you want to start with? (Best to start with 10000000) ")
-    ranges = input("What is the range of your desired PID scraping? ")
-    pid = int(pid)
-    ranges = int(ranges)
+    #pid = input(
+    #    "What PID do you want to start with? (Best to start with 10000000) ")
+    #ranges = input("What is the range of your desired PID scraping? ")
+    #pid = int(pid)
+    #ranges = int(ranges)
+    pid = 11539160
+    ranges = 1400000
     file = open("pids.txt", "w")
     a = []
     for i in range(ranges):
@@ -44,7 +48,7 @@ if choice == 1 or choice == 2:
 else:
     print("Invalid choice")
 
-pool = ThreadPool(40)
+pool = ThreadPool(8)
 if choice == 1:
     results = pool.map(htscraping, a)
     pool.close()
